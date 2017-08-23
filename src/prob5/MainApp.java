@@ -3,11 +3,15 @@ package prob5;
 
 public class MainApp {
 
+	static void test( MyStack<? extends Number> numberStack ) {
+		
+	}
+	
 	public static void main(String[] args) {
 		try {
-			MyStack stack = new MyStack(5);
+			MyStack<String> stack = new MyStack<String>(5);
 			stack.push("Hello");
-			stack.push("World");
+			stack.push("abc");
 			stack.push("!!!");
 			stack.push("java");
 			stack.push(".");
@@ -23,11 +27,20 @@ public class MainApp {
 
 			System.out.println("======================================");
 
-			stack = new MyStack(3);
+			stack = new MyStack<String>(3);
 			stack.push("Hello");
 
 			System.out.println(stack.pop());
 			System.out.println(stack.pop());
+			
+			//getneric 객체 생성 (와일드 카드를 사용해서 제네릭 타입 제한)
+			//MyStack<? extends Number> numberStack = new MyStack<Integer>(10);
+			//numberStack.push(6);
+			MyStack<Integer> numberStack = new MyStack<Integer>(10); //제너릭 클래스를 타입으로 받을때..
+			test( numberStack);
+			numberStack.push(10);
+			
+			
 			
 		} catch ( MyStackException ex) {
 			System.out.println( ex );
